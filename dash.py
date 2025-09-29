@@ -28,7 +28,7 @@ df_filt = df_year.query("country in @countries")
 
 # ===== KPIs =====
 left, mid, right = st.columns(3)
-with left: 
+with left:
     st.metric("Countries", df_filt["country"].nunique())
 with mid:
     st.metric("Median life expectancy", f"{df_filt['lifeExp'].median():.1f} yrs")
