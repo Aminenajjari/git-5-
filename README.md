@@ -1,11 +1,10 @@
-# ⚡ Streamlit Dashboard v5 — Performance & Scale
+Streamlit Dashboard v5 — Performance & Scale
 
 This version of the dashboard demonstrates **scalable data exploration** in Python with **Streamlit** and **DuckDB**.  
 It is designed to handle **large datasets (millions of rows)** while staying responsive.
 
----
 
-## 🚀 Features
+Features
 - **Offline-safe demo data**  
   Uses Plotly’s built-in Gapminder dataset, scaled up to **1M+ rows** with jitter for realism.
 - **File upload support**  
@@ -21,10 +20,9 @@ It is designed to handle **large datasets (millions of rows)** while staying res
 - **Download support**  
   Export the currently visible page of data as CSV.
 
----
 
-## 📦 Requirements
+Requirements
 Install dependencies:
 
-```bash
+``bash
 pip install streamlit plotly duckdb pyarrow streamlit-aggrid pandas
