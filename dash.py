@@ -234,31 +234,3 @@ with tab_table:
         mime="text/csv",
     )
 
-with tab_compare:
-    st.markdown("Compare **life expectancy over time** for the currently selected countries.")
-    # Use the *global* df (all years), but restrict to same continent/country filters and optional ranges for consistency
-    if not countries:
-        st.info("Select at least one country in the sidebar.")
-    else:
-        df_comp = df[
-            (df["country"].isin(countries)) &
-            (df["continent"].isin(continents))
-        ]
-        # (Optional) keep same ranges to avoid extreme lines
-        df_comp = df_comp[
-            df_comp["gdpPercap"].between(gdp_range[0], gdp_range[1]) &
-            df_comp["lifeExp"].between(lex_range[0], lex_range[1])
-        ]
-        if df_comp.empty:
-            st.info("No time-series data after applying advanced ranges.")
-        else:
-            fig_line = px.line(
-                df_comp.sort_values(["country", "year"]),
-                x="year", y="lifeExp", color="country",
-                markers=True, height=520
-            )
-            st.plotly_chart(fig_line, use_container_width=True)
-
-# ---------------- Empty-state gentle hint ----------------
-if df_filt.empty:
-    st.caption("Tip: widen your GDP/LifeExp ranges or add continents/countries back.")
